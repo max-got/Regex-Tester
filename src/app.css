@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Manrope';
+	font-style: normal;
+	font-weight: 100 900;
+	src: url('/fonts/Manrope[wght].woff2');
+	/* IE9 Compat Modes */
+	src: local(''), url('/fonts/Manrope[wght].woff2') format('woff2');
+	/* Super Modern Browsers */
+}
+
+@layer base {
+	html {
+		@apply scroll-smooth;
+	}
+
+	body {
+		@apply bg-black text-white;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5 {
+		@apply mb-3 font-extrabold;
+	}
+
+	h1 {
+		@apply mb-5 text-5xl;
+	}
+
+	h2 {
+		@apply mb-4 text-3xl;
+	}
+
+	h2 {
+		@apply text-xl;
+	}
+
+	button {
+		@apply my-4 rounded bg-highlight py-1 px-6 font-medium text-white;
+	}
+
+	p {
+		@apply mb-4 mt-1 text-offwhite max-w-prose;
+	}
+
+	input {
+		@apply text-[19px];
+	}
+
+	a {
+		@apply text-third;
+	}
+
+	a:hover {
+		@apply text-third-dark underline;
+	}
+}
