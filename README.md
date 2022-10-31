@@ -6,7 +6,7 @@ A small tool for testing regular expressions. As a university project for the le
 
 ## 📸
 
-![Regex Screenshot](/schietegal/Regex-Tester/blob/main/src/lib/assets/screen.jpg?raw=true)
+![Regex-Test Screenshot](/src/lib/assets/screen.jpg?raw=true)
 
 ## Run Locally
 
