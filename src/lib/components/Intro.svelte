@@ -51,9 +51,8 @@
 					<span class="inline-block text-third">regulärer Ausdrücke</span>
 				</h1>
 				<p class="text-white-dark md:text-lg">
-					Hier habt ihr die Möglichkeit zu testen wie Regex bzw. RegExp funktioniert. <span
-						class="text-third/30">*</span
-					>
+					Hier habt ihr die Möglichkeit zu testen wie Regex bzw. RegExp
+					funktioniert. <span class="text-third/30">*</span>
 					<br class="mb-4 block" />
 					<span class="text-white-dark/25"
 						><span class="text-third/30">*</span> in Javascript</span
@@ -69,7 +68,7 @@
 					Jetzt testen
 				</a>
 				<a
-					href="https://github.com/schietegal"
+					href="https://github.com/schietegal/Regex-Tester"
 					aria-label="Github Link"
 					style="opacity:0"
 					class="inline-flex items-center font-semibold text-highlight transition-colors duration-200 hover:text-third-light"
