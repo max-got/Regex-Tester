@@ -8,6 +8,10 @@ A small tool for testing regular expressions. As a university project for the le
 
 ![Regex-Test Screenshot](/src/lib/assets/screen.jpg?raw=true)
 
+## Demo
+
+https://regex-tester-tdi.vercel.app/
+
 ## Run Locally
 
 Clone the project
