@@ -4,6 +4,10 @@ Ein kleines Tool zum Testen von regulären Ausdrücken. Als Uni-Projekt für die
 
 A small tool for testing regular expressions. As a university project for the lecture Theoretical Computer Science at [THB](https://www.th-brandenburg.de/startseite/).
 
+## 📸
+
+![Regex Screenshot](/schietegal/Regex-Tester/blob/main/src/lib/assets/screen.jpg?raw=true)
+
 ## Run Locally
 
 Clone the project
