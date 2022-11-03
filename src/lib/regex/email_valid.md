@@ -1,7 +1,7 @@
 ---
 title: E-Mail Validierung
 description: Das kann eventuell ganz praktisch sein, wenn ihr einen E-Mail Input habt und ihr sicher gehen wollt, dass der User eine gültige E-Mail Adresse eingibt. Kontaktformulare sind hier ein gutes Beispiel.
-tags: Email, Farbe
+tags: Email, Validierung
 regex: ^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$
 testString: |
   gottscha@th-brandenburg.de
