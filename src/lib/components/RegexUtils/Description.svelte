@@ -66,3 +66,21 @@
 		{/if}
 	{/if}
 </div>
+
+<style lang="postcss">
+	:global(.desc blockquote) {
+		@apply my-4 border-l-4 border-third-light bg-black-light/10 p-4;
+	}
+
+	:global(.desc blockquote p) {
+		@apply mb-0 text-base font-medium italic leading-relaxed text-black-light;
+	}
+
+	:global(.desc blockquote p a) {
+		@apply text-highlight-dark;
+	}
+
+	:global(.desc p code) {
+		@apply rounded bg-black-light/10 p-1 px-1 text-third;
+	}
+</style>
