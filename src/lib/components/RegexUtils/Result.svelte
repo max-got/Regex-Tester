@@ -23,7 +23,7 @@
 					<li
 						in:fly={{ y: 50, duration: 300 }}
 						out:fly={{ x: 50, duration: 200 }}
-						data-ln={i}
+						data-ln={i + 1}
 					>
 						<span>
 							{#if item.valid}
