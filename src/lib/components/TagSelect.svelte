@@ -8,7 +8,6 @@
 	import { fade } from 'svelte/transition'
 
 	export let tags: Array<string> = []
-
 	export let tagFilterArray: Array<string> = []
 
 	let showButton = false
@@ -16,10 +15,7 @@
 
 	function hideAndShow() {
 		let currentOpacity = anime.get(selectEl, 'opacity')
-		let currentDisplay = anime.get(selectEl, 'display')
-
 		let wantedOpacity = currentOpacity === 0 ? 1 : 0
-
 		//work with translate to hide and show the element
 		if (currentOpacity == 1) {
 			anime({
@@ -51,6 +47,26 @@
 	tagFilter.subscribe((value) => {
 		tagFilterArray = value
 	})
+	//Change +/- if one tag is selected
+	$: if (tagFilterArray.length > 0) {
+		showButton = true
+	}
+	//Show the select element, if min. 1 tag is selected
+	//Check if SelectElement is already visible
+	$: if (tagFilterArray.length > 0) {
+		if (selectEl.style.opacity == '0' || selectEl.style.opacity == '') {
+			anime.set(selectEl, { display: 'block' })
+			anime.set(selectEl, { zIndex: 10 })
+			anime({
+				targets: selectEl,
+				translateY: [-10, 0],
+				translateX: [0, 0],
+				opacity: [0, 1],
+				duration: 200,
+				easing: 'easeInOutQuad'
+			})
+		}
+	}
 	$: selectValue = tagFilterArray.length > 0 ? tagFilterArray : null
 
 	const handleSelect = (e: CustomEvent) => {
@@ -63,9 +79,7 @@
 
 	const handleClear = (e: CustomEvent) => {
 		let clickedTag: { label: string; value: string } = e.detail
-
 		if (e.detail === null) tagFilter.set([])
-
 		tagFilter.update((tagFilterArray) => {
 			return tagFilterArray.filter((tag) => tag !== clickedTag.value)
 		})
@@ -94,7 +108,9 @@
 			on:select={handleSelect}
 			on:clear={handleClear}
 		>
-			<div slot="prepend" class="mr-2 text-highlight"><Tag weight="fill" /></div>
+			<div slot="prepend" class="mr-2 text-highlight">
+				<Tag weight="fill" />
+			</div>
 			<div slot="empty" class="p-4 text-center text-white-dark">
 				Keine weiteren Tags verfügbar
 			</div>
