@@ -6,8 +6,10 @@
 	import Code from './RegexUtils/Code.svelte'
 	import anime from 'animejs'
 
-	import { onMount, SvelteComponent } from 'svelte'
+	import { onMount } from 'svelte'
+	import type { SvelteComponent } from 'svelte'
 	import Tags from './RegexUtils/Tags.svelte'
+	import matchTextAreaValue from '$lib/utils/regex/matchTextAreaValue'
 
 	export let md: mdData['md']
 
@@ -37,80 +39,10 @@
 		}
 	}
 
+	$: results = matchTextAreaValue(stringToTest, new RegExp(regex, 'g'))
+
 	let regexValid: any
-
 	$: regexValid = new RegExp(regex).test(stringToTest)
-	$: stringToTest, regexNewLine()
-
-	//textarea value
-	let arr: Array<string> = []
-	//Für Matches from arr
-	let resultObj: resultObjects = [
-		{
-			index: 0,
-			result: arr,
-			valid: false
-		}
-	]
-	onMount(async () => {
-		arr = stringToTest.split(/\r?\n/)
-		regexNewLine()
-	})
-
-	const regexNewLine = (): void => {
-		//Textarea Input to Array in Array split by new line
-		arr = stringToTest.split(/\r?\n/u)
-
-		arr.forEach((item: string, index: number) => {
-			let regexResult = item.match(regex)
-			//Item darf nicht leer sein -> bspw. textarea ist leer
-			if (item !== '') {
-				//MATCH
-				//Item muss ein Match haben -> bspw. item ist 'abc' und regex ist /[abc]/g
-				if (regexResult !== null) {
-					//add item to test
-					if (item) {
-						resultObj[index] = {
-							index: index,
-							result: [regexResult[0]],
-							valid: true
-						}
-					}
-				}
-				//NO MATCH
-				else {
-					resultObj[index] = {
-						index: index,
-						result: [[item][0]],
-						valid: false
-					}
-				}
-			} else {
-				resultObj[index] = {
-					index: index,
-					result: null,
-					valid: false
-				}
-			}
-		})
-
-		//If item is empty and resultObj is longer than arr, delete the item with that index - vice versa
-		if (arr.length !== resultObj.length) {
-			resultObj.splice(arr.length, resultObj.length - arr.length)
-		}
-
-		//If last item is empty, delete it
-		if (arr[0] !== '' && arr[arr.length - 1] === '') {
-			resultObj.splice(arr.length - 1, 1)
-		}
-
-		resultObj.forEach((item, index) => {
-			if (item.result === null && arr.length > resultObj.length) {
-				resultObj.splice(index, 1)
-				arr.splice(index, 1)
-			}
-		})
-	}
 </script>
 
 <div
@@ -122,5 +54,5 @@
 	<Description {md} bind:this={description} />
 	<Code {regex} />
 	<Input label="Eingabe" bind:textarea={stringToTest} />
-	<Result label="Matches" value={resultObj} />
+	<Result label="Matches" {results} />
 </div>

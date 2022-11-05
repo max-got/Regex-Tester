@@ -2,10 +2,11 @@
 	import type { resultObjects } from '$lib/types'
 	import Valid from 'phosphor-svelte/lib/Check'
 	import Invalid from 'phosphor-svelte/lib/X'
-	export let label: string
-	export let value: resultObjects
-
 	import { fly } from 'svelte/transition'
+
+	export let label: string
+	export let results: resultObjects
+	results = Object.values(results)
 
 	// Make label ID ready for use in HTML
 	const labelId = label.replace(/\s/g, '').toLowerCase()
@@ -19,7 +20,7 @@
 	<div class="relative flex gap-2 overflow-hidden">
 		<ul class="resultList list-inside text-black">
 			<div>
-				{#each value as item, i}
+				{#each results as item, i}
 					<li
 						in:fly={{ y: 50, duration: 300 }}
 						out:fly={{ x: 50, duration: 200 }}
@@ -31,7 +32,7 @@
 							{:else}
 								<svelte:component this={Invalid} color="red" size="1.5em" />
 							{/if}
-							{item.result !== null ? item.result : 'Leere Zeile'}
+							{item.result !== '' ? item.result : 'Leere Zeile'}
 						</span>
 					</li>
 				{/each}
