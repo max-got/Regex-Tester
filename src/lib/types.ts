@@ -1,7 +1,7 @@
 interface resultObject {
-	index: number;
-	result: Array<string> | null;
-	valid: boolean;
+	index: number
+	result: string
+	valid: boolean
 }
 
 interface resultObjects extends Array<resultObject> { }
