@@ -30,10 +30,13 @@
 							<span>
 								{#if item.valid}
 									<svelte:component this={Valid} color="green" size="1.5em" />
+									<span class="font-medium">
+										{item.result}
+									</span>
 								{:else}
 									<svelte:component this={Invalid} color="red" size="1.5em" />
+									{item.result}
 								{/if}
-								{item.result}
 							</span>
 						</li>
 					{/if}
