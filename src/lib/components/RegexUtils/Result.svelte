@@ -21,20 +21,22 @@
 		<ul class="resultList list-inside text-black">
 			<div>
 				{#each results as item, i}
-					<li
-						in:fly={{ y: 50, duration: 300 }}
-						out:fly={{ x: 50, duration: 200 }}
-						data-ln={i + 1}
-					>
-						<span>
-							{#if item.valid}
-								<svelte:component this={Valid} color="green" size="1.5em" />
-							{:else}
-								<svelte:component this={Invalid} color="red" size="1.5em" />
-							{/if}
-							{item.result !== '' ? item.result : 'Leere Zeile'}
-						</span>
-					</li>
+					{#if item.result !== ''}
+						<li
+							in:fly={{ y: 50, duration: 300 }}
+							out:fly={{ x: 50, duration: 200 }}
+							data-ln={i + 1}
+						>
+							<span>
+								{#if item.valid}
+									<svelte:component this={Valid} color="green" size="1.5em" />
+								{:else}
+									<svelte:component this={Invalid} color="red" size="1.5em" />
+								{/if}
+								{item.result}
+							</span>
+						</li>
+					{/if}
 				{/each}
 			</div>
 		</ul>
